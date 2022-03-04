@@ -12,11 +12,7 @@ class GildedRose(object):
         for item in self.items:
             if item.name == "Sulfuras, Hand of Ragnaros":
                 return
-            if item.name == "Aged Brie":
-                item.update_quality()
-            elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                item.update_quality()
-            else:
-                item.update_quality()
+            item.update_quality()
+
 
 
