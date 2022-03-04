@@ -7,16 +7,13 @@ class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
-        
+
     def update_quality(self):
         for item in self.items:
             if item.name == "Sulfuras, Hand of Ragnaros":
                 return
             if item.name == "Aged Brie":
-                item.sell_in = item.sell_in - 1
-                item.increase_quality()
-                if item.sell_in < 0:
-                    item.increase_quality()
+                item.update_quality()
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 item.sell_in = item.sell_in - 1
                 item.increase_quality()
@@ -51,6 +48,14 @@ class Item:
             self.quality = self.quality + 1
     
     def update_quality(self):
-        _void
+        print("update quality")
 
-    
+class AgedBrieItem(Item):
+    def __init__(self, name, sell_in, quality):
+        Item.__init__(self, name, sell_in, quality)
+
+    def update_quality(self):
+        self.sell_in = self.sell_in - 1
+        super().increase_quality()
+        if self.sell_in < 0:
+            super().increase_quality()

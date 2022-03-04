@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from gilded_rose import Item, GildedRose
+from gilded_rose import Item, GildedRose, AgedBrieItem
 
 
 class GildedRoseTest(unittest.TestCase):
@@ -24,7 +24,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(10, gilded_rose.items[0].quality)
     
     def test_quality_could_not_be_more_than_fifty(self):
-        items = [Item("Aged Brie", 10, 50)]
+        items = [AgedBrieItem("Aged Brie", 10, 50)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(50, gilded_rose.items[0].quality)
@@ -36,19 +36,19 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(38, gilded_rose.items[0].quality)
     
     def test_aged_brie_increase_quality_when_it_gets_older(self):
-        items = [Item("Aged Brie", 1, 40)]
+        items = [AgedBrieItem("Aged Brie", 1, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(41, gilded_rose.items[0].quality)
     
     def test_aged_brie_increase_by_two_quality_when_date_passed(self):
-        items = [Item("Aged Brie", -1, 40)]
+        items = [AgedBrieItem("Aged Brie", -1, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(42, gilded_rose.items[0].quality)
 
     def test_aged_brie_increase_by_two_quality_when_date_passed_and_not_more_than_fifty(self):
-        items = [Item("Aged Brie", -1, 50)]
+        items = [AgedBrieItem("Aged Brie", -1, 50)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(50, gilded_rose.items[0].quality)
