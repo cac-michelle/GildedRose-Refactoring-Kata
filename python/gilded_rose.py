@@ -17,9 +17,6 @@ class GildedRose(object):
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 item.update_quality()
             else:
-                item.sell_in = item.sell_in - 1
-                item.decrease_quality()
-                if item.sell_in < 0:
-                    item.decrease_quality()
+                item.update_quality()
 
 

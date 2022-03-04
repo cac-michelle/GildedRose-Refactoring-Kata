@@ -16,7 +16,11 @@ class Item:
             self.quality = self.quality + 1
     
     def update_quality(self):
-        print("update quality")
+        self.sell_in = self.sell_in - 1
+        self.decrease_quality()
+        if self.sell_in < 0:
+            self.decrease_quality()
+
 
 class AgedBrieItem(Item):
     def __init__(self, name, sell_in, quality):
