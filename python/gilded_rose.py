@@ -3,7 +3,6 @@
 from inspect import _void
 from Item import *
 
-
 class GildedRose(object):
 
     def __init__(self, items):
@@ -16,14 +15,7 @@ class GildedRose(object):
             if item.name == "Aged Brie":
                 item.update_quality()
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                item.sell_in = item.sell_in - 1
-                item.increase_quality()
-                if item.sell_in < 10:
-                    item.increase_quality()
-                    if item.sell_in < 5:
-                        item.increase_quality()
-                if item.sell_in < 0:
-                    item.quality = 0
+                item.update_quality()
             else:
                 item.sell_in = item.sell_in - 1
                 item.decrease_quality()

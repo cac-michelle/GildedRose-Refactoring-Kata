@@ -55,43 +55,43 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(50, gilded_rose.items[0].quality)
     
     def test_backstage_passes_increase_quality_by_two_when_sellin_less_than_ten(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 10, 40)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 10, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(42, gilded_rose.items[0].quality)
     
     def test_backstage_passes_increase_quality_by_two_when_sellin_less_than_six(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 6, 40)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 6, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(42, gilded_rose.items[0].quality)
     
     def test_backstage_passes_increase_quality_by_three_when_sellin_less_than_five(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 5, 40)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 5, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(43, gilded_rose.items[0].quality)
     
     def test_backstage_passes_increase_quality_by_two_when_sellin_less_than_six_and_not_more_than_fifty(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 6, 49)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 6, 49)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(50, gilded_rose.items[0].quality)
     
     def test_backstage_passes_increase_quality_by_three_when_sellin_less_than_five_and_not_more_than_fifty(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 5, 48)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 5, 48)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(50, gilded_rose.items[0].quality)
 
     def test_backstage_passes_quality_drops_to_zero_after_concert(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 0, 40)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 0, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(0, gilded_rose.items[0].quality)
 
     def test_backstage_passes_quality_increase_quality_by_one_when_date_is_more_than_10(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 11, 40)]
+        items = [BackstagePass("Backstage passes to a TAFKAL80ETC concert", 11, 40)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(41, gilded_rose.items[0].quality)
