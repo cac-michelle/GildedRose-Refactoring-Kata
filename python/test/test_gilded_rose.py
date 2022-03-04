@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from gilded_rose import Item, GildedRose, AgedBrieItem
+from gilded_rose import GildedRose
+from Item import *
 
 
 class GildedRoseTest(unittest.TestCase):
