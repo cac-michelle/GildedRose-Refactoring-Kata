@@ -17,28 +17,23 @@ class GildedRose(object):
         for item in self.items:
             if item.name == "Sulfuras, Hand of Ragnaros":
                 return
+            item.sell_in = item.sell_in - 1
             if item.name == "Aged Brie":
                 self.increase_quality(item)
+                if item.sell_in < 0:
+                    self.increase_quality(item)
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 self.increase_quality(item)
-                if item.sell_in < 11:
+                if item.sell_in < 10:
                     self.increase_quality(item)
-                    if item.sell_in < 6:
+                    if item.sell_in < 5:
                         self.increase_quality(item)
+                if item.sell_in < 0:
+                    item.quality = 0
             else:
                 self.decrease_quality(item)
-
-            item.sell_in = item.sell_in - 1
-            if item.sell_in < 0:
-                if item.name != "Aged Brie":
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                        self.decrease_quality(item)
-                    else:
-                        item.quality = item.quality - item.quality
-                else:
-                    self.increase_quality(item)
-    
-   
+                if item.sell_in < 0:
+                    self.decrease_quality(item)
 
 
 class Item:
